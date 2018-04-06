@@ -48,14 +48,12 @@ struct Person {
 
 impl Person {
     pub fn generate_name() -> String {
-        let num = rand::thread_rng().gen_range(1, 10);
-        let name = match num {
+        match rand::thread_rng().gen_range(1, 10) {
             0...2 => String::from("Rob"),
             3...5 => String::from("Andrea"),
             6...8 => String::from("Joey"),
             _ => String::from("Aaron")
-        };
-        name
+        }
     }
 
     pub fn generate_gender() -> Gender {
@@ -68,13 +66,10 @@ impl Person {
     }
 
     pub fn generate_traits() -> PersonTraits {
-        let intelligence = PersonTraits::generate_intelligence();
-        let strength = PersonTraits::generate_strength();
-        let person_trait = PersonTraits {
-            intelligence: intelligence,
-            strength: strength    
-        };
-        person_trait
+        PersonTraits {
+            intelligence: PersonTraits::generate_intelligence(),
+            strength: PersonTraits::generate_strength()
+        }
     }
 
     pub fn generate_age() -> u32 {
@@ -89,17 +84,11 @@ struct Village {
 impl Village {
     pub fn generate_persons(&mut self, size: u32) {
         for _i in 1..size {
-            
-            let name = Person::generate_name();
-            let gender = Person::generate_gender();
-            let traits = Person::generate_traits();
-            let age = Person::generate_age();
-
             let mut person = Person {
-                name: name,
-                gender: gender,
-                traits: traits,
-                age: age
+                name: Person::generate_name(),
+                gender: Person::generate_gender(),
+                traits: Person::generate_traits(),
+                age: Person::generate_age()
             };
 
             self.villagers.push(person);
