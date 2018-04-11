@@ -1,21 +1,18 @@
 mod genetics;
 use rand::{thread_rng, Rng};
+use names::{Generator, Name};
 
 pub struct Person {
     pub genetics: genetics::Genetics,
     pub name: String,
-    pub age: u32
+    pub age: u32,
+    pub village_location: u32
 }
 
 impl Person {
     pub fn generate_name() -> String {
-        let mut rng = thread_rng();        
-        match rng.gen_range(1, 10) {
-            0...2 => String::from("Rob"),
-            3...5 => String::from("Andrea"),
-            6...8 => String::from("Joey"),
-            _ => String::from("Aaron")
-        }
+        let mut generator = Generator::with_naming(Name::Plain);
+        generator.next().unwrap()
     }
 
     pub fn generate_genetics() -> genetics::Genetics {
