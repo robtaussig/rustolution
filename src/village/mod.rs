@@ -8,7 +8,11 @@ pub struct Village {
 }
 
 impl Village {
-    
+    pub fn describe(&self) {
+        println!("Village: {}", self.name);
+        println!("Country Location: {}", self.country_location);
+        println!("----------");
+    }
 }
 
 pub fn generate_persons(number_of_villagers: u32) -> Vec<Person> {

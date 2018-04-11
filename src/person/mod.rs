@@ -11,7 +11,12 @@ pub struct Person {
 }
 
 impl Person {
-    
+    pub fn describe(&self) {
+        println!("Name: {}", self.name);
+        println!("Age: {}", self.age);
+        println!("Village Location: {}", self.village_location);
+        self.genetics.describe();
+    }
 }
 
 pub fn generate_person_name() -> String {

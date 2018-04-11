@@ -10,7 +10,11 @@ pub struct Country {
 }
 
 impl Country {
-    
+    pub fn describe(&self) {
+        println!("Country: {}", self.name);
+        println!("World Location: {}", self.world_location);
+        println!("Environment: [{}]", self.environment);
+    }
 }
 
 pub fn generate_villages(number_of_villages: u32, number_of_villagers: u32) -> Vec<Village> {
