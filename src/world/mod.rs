@@ -6,14 +6,15 @@ pub struct World {
 }
 
 impl World {
-    pub fn generate_countries(&mut self, size: u32) {
-        for _i in 1..size {
+    pub fn generate_countries(number_of_countries: u32, number_of_villages: u32, number_of_villagers: u32) -> Vec<country::Country> {
+        let mut created_countries = Vec::new();
+        for _i in 1..number_of_countries {
             let mut created_country = country::Country {
-                villages: Vec::new()
+                villages: country::Country::generate_villages(number_of_villages, number_of_villagers)
             };
-            created_country.generate_villages(5);
-            self.countries.push(created_country);
+            created_countries.push(created_country);
         }
+        created_countries
     }
 
     pub fn describe(&self) {
