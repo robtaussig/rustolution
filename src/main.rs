@@ -1,6 +1,11 @@
 extern crate rand;
 extern crate names;
 mod world;
+mod simulator;
+mod country;
+mod village;
+mod environment;
+mod person;
 
 const WORLD_SIZE: u32 = 5;
 const NUMBER_OF_COUNTRIES_PER_WORLD: u32 = 20;
@@ -12,5 +17,5 @@ fn main() {
         world_size: WORLD_SIZE,
         countries: world::World::generate_countries(NUMBER_OF_COUNTRIES_PER_WORLD, NUMBER_OF_VILLAGES_PER_COUNTRY, NUMBER_OF_VILLAGERS_PER_VILLAGE)
     };
-    created_world.describe();
+    simulator::simulate(created_world);
 }

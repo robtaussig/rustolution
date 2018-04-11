@@ -7,15 +7,17 @@ pub struct Genetics {
 }
 
 impl Genetics {
-    pub fn generate_intelligence() -> u32 {
-        let mut rng = thread_rng(); 
-        rng.gen_range(1, 10)
-    }
+    
+}
 
-    pub fn generate_strength() -> u32 {
-        let mut rng = thread_rng(); 
-        rng.gen_range(1, 10)
-    }
+pub fn generate_intelligence() -> u32 {
+    let mut rng = thread_rng(); 
+    rng.gen_range(1, 10)
+}
+
+pub fn generate_strength() -> u32 {
+    let mut rng = thread_rng(); 
+    rng.gen_range(1, 10)
 }
 
 impl fmt::Display for Genetics {

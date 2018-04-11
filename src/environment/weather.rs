@@ -7,15 +7,17 @@ pub struct Weather {
 }
 
 impl Weather {
-    pub fn generate_precipitation() -> u32 {
-        let mut rng = thread_rng(); 
-        rng.gen_range(1, 100)
-    }
+    
+}
 
-    pub fn generate_temperature() -> u32 {
-        let mut rng = thread_rng(); 
-        rng.gen_range(1, 100)
-    }
+pub fn generate_precipitation() -> u32 {
+    let mut rng = thread_rng(); 
+    rng.gen_range(1, 100)
+}
+
+pub fn generate_temperature() -> u32 {
+    let mut rng = thread_rng(); 
+    rng.gen_range(1, 100)
 }
 
 impl fmt::Display for Weather {
