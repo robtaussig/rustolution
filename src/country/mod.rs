@@ -1,10 +1,10 @@
 use village::{Village, generate_persons, generate_village_name};
 use environment::{Environment, generate_weather, generate_land};
 use names::{Generator, Name};
-use std::collections::HashMap;
+use linked_hash_map::{LinkedHashMap};
 
 pub struct Country {
-    pub villages: HashMap<u32, Village>,
+    pub villages: LinkedHashMap<u32, Village>,
     pub environment: Environment,
     pub name: String,
     pub world_location: u32
@@ -18,13 +18,14 @@ impl Country {
     }
 }
 
-pub fn generate_villages(number_of_villages: u32, number_of_villagers: u32) -> HashMap<u32, Village> {
-    let mut created_villages = HashMap::new();
+pub fn generate_villages(number_of_villages: u32, number_of_villagers: u32, country: u32) -> LinkedHashMap<u32, Village> {
+    let mut created_villages = LinkedHashMap::new();
     for i in 1..number_of_villages + 1 {
         let mut created_village = Village {
-            people: generate_persons(number_of_villagers),
+            people: generate_persons(number_of_villagers, country, i),
             name: generate_village_name(),
-            country_location: i
+            country_location: i,
+            country: country
         };
         created_villages.insert(i, created_village);
     }

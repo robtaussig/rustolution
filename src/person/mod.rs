@@ -2,12 +2,17 @@ mod genetics;
 use self::{genetics::Genetics, genetics::generate_intelligence, genetics::generate_strength};
 use rand::{thread_rng, Rng};
 use names::{Generator, Name};
+use country::{Country};
+use world::{World};
+use std::error::Error;
 
 pub struct Person {
     pub genetics: Genetics,
     pub name: String,
     pub age: u32,
-    pub village_location: u32
+    pub village_location: u32,
+    pub country: u32,
+    pub village: u32
 }
 
 impl Person {

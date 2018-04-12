@@ -1,5 +1,6 @@
 extern crate rand;
 extern crate names;
+extern crate linked_hash_map;
 mod world;
 mod simulator;
 mod country;
