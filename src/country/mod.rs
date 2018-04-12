@@ -1,9 +1,10 @@
 use village::{Village, generate_persons, generate_village_name};
 use environment::{Environment, generate_weather, generate_land};
 use names::{Generator, Name};
+use std::collections::HashMap;
 
 pub struct Country {
-    pub villages: Vec<Village>,
+    pub villages: HashMap<u32, Village>,
     pub environment: Environment,
     pub name: String,
     pub world_location: u32
@@ -17,15 +18,15 @@ impl Country {
     }
 }
 
-pub fn generate_villages(number_of_villages: u32, number_of_villagers: u32) -> Vec<Village> {
-    let mut created_villages = Vec::new();
+pub fn generate_villages(number_of_villages: u32, number_of_villagers: u32) -> HashMap<u32, Village> {
+    let mut created_villages = HashMap::new();
     for i in 1..number_of_villages + 1 {
         let mut created_village = Village {
             people: generate_persons(number_of_villagers),
             name: generate_village_name(),
             country_location: i
         };
-        created_villages.push(created_village);
+        created_villages.insert(i, created_village);
     }
     created_villages
 }

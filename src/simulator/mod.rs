@@ -1,5 +1,5 @@
 use world::{World};
 
-pub fn simulate(world: World) {
+pub fn simulate(mut world: World) {
   world.describe();
 }

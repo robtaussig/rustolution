@@ -1,8 +1,9 @@
 use person::{Person, generate_person_name, generate_age, generate_genetics};
 use names::{Generator, Name};
+use std::collections::HashMap;
 
 pub struct Village {
-    pub people: Vec<Person>,
+    pub people: HashMap<u32, Person>,
     pub name: String,
     pub country_location: u32
 }
@@ -15,8 +16,8 @@ impl Village {
     }
 }
 
-pub fn generate_persons(number_of_villagers: u32) -> Vec<Person> {
-    let mut created_people = Vec::new();
+pub fn generate_persons(number_of_villagers: u32) -> HashMap<u32, Person> {
+    let mut created_people = HashMap::new();
     for i in 1..number_of_villagers + 1 {
         let mut created_person = Person {
             name: generate_person_name(),
@@ -25,7 +26,7 @@ pub fn generate_persons(number_of_villagers: u32) -> Vec<Person> {
             village_location: i
         };
 
-        created_people.push(created_person);
+        created_people.insert(i, created_person);
     }
     created_people
 }
